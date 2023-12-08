@@ -51,7 +51,14 @@ class SupabaseServer {
 
   addSymptom(Map body) async {
     await supabase.from("symptoms").insert(body).select();
-    
+  }
+
+  deleteMedication({required int? id}) async {
+    await supabase.from("medication").delete().eq('id', id);
+  }
+
+  deleteSymptom({required int id}) async {
+    await supabase.from("symptoms").delete().eq('id', id);
   }
 
   saveCaptrueImage(Uint8List pathImagefile) async {

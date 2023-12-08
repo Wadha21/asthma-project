@@ -1,5 +1,6 @@
 import 'dart:typed_data';
 import 'package:asthma/Screens/Data_Symptoms_Screen/components/add_textfield.dart';
+import 'package:asthma/Screens/medication_data/component/data_card_widget.dart';
 import 'package:asthma/Services/supabase.dart';
 import 'package:asthma/blocs/auth_bloc/auth_bloc.dart';
 import 'package:asthma/constants/colors.dart';
@@ -44,9 +45,14 @@ class _MedicationTrackerScreenState extends State<MedicationTrackerScreen> {
           'Medications',
           style: TextStyle(color: ColorPaltte().darkBlue),
         ),
-        leading: Icon(
-          Icons.arrow_back,
-          color: ColorPaltte().darkBlue,
+        leading: IconButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          icon: Icon(
+            Icons.arrow_back,
+            color: ColorPaltte().darkBlue,
+          ),
         ),
         actions: [
           IconButton(
@@ -77,146 +83,85 @@ class _MedicationTrackerScreenState extends State<MedicationTrackerScreen> {
         ],
       ),
       body: Padding(
-        padding: const EdgeInsets.all(16),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Container(
-              constraints:
-                  BoxConstraints(minHeight: 100, maxHeight: context.getWidth()),
-              padding: const EdgeInsets.all(12),
-              width: context.getWidth(),
-              decoration: BoxDecoration(
-                  border: Border.all(
-                    style: BorderStyle.solid,
-                    color: Colors.black,
-                  ),
-                  borderRadius: BorderRadius.circular(20)),
-              child: Column(
+        padding: const EdgeInsets.all(20),
+        child: Container(
+          padding: const EdgeInsets.all(12),
+          width: context.getWidth(),
+          decoration: BoxDecoration(
+              border: Border.all(
+                style: BorderStyle.solid,
+                color: Colors.black,
+              ),
+              borderRadius: BorderRadius.circular(20)),
+          child: Column(
+            children: [
+              Row(
                 children: [
-                  Row(
-                    children: [
-                      Text(
-                        'Your Medication',
-                        style: TextStyle(
-                            fontSize: 20,
-                            fontWeight: FontWeight.w700,
-                            color: ColorPaltte().darkBlue),
-                      ),
-                      const Spacer(),
-                      TextButton(
-                        onPressed: () {
-                          showButtonSheet(context);
-                        },
-                        child: Row(
-                          children: [
-                            Icon(
-                              Icons.add,
-                              color: ColorPaltte().newDarkBlue,
-                            ),
-                            Text(
-                              'Add Medication',
-                              style: TextStyle(
-                                color: ColorPaltte().newDarkBlue,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
+                  Text(
+                    'Your Medication',
+                    style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.w700,
+                        color: ColorPaltte().darkBlue),
                   ),
-                  Expanded(
-                    child: BlocBuilder<AsthmaBloc, AsthmaState>(
-                      builder: (context, state) {
-                        if (state is SuccessGetMedicationState) {
-                          return ListView.builder(
-                            shrinkWrap: true,
-                            itemCount: state.medications.length,
-                            itemBuilder: (context, index) {
-                              final medication = state.medications[index];
-                              return Card(
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(10)),
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(10.0),
-                                    child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.start,
-                                      children: [
-                                        Container(
-                                          height: 35,
-                                          width: 35,
-                                          decoration: BoxDecoration(
-                                            borderRadius:
-                                                BorderRadius.circular(10),
-                                            shape: BoxShape.rectangle,
-                                            color: ColorPaltte().lightBlue,
-                                          ),
-                                          child: const Icon(
-                                            Icons.library_books_rounded,
-                                            color: Colors.white,
-                                          ),
-                                        ),
-                                        const SizedBox(
-                                          width: 20,
-                                        ),
-                                        Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            Text(
-                                              "name: ${medication.medicationName}",
-                                              style:
-                                                  const TextStyle(fontSize: 16),
-                                            ),
-                                            Text(
-                                              "days to take: ${medication.days.toString()}",
-                                              style:
-                                                  const TextStyle(fontSize: 16),
-                                            ),
-                                            Text(
-                                              "start date: ${medication.date}",
-                                              style:
-                                                  const TextStyle(fontSize: 16),
-                                            ),
-                                          ],
-                                        ),
-                                        const Spacer(),
-                                        Container(
-                                          height: 30,
-                                          width: 30,
-                                          decoration: BoxDecoration(
-                                            borderRadius:
-                                                BorderRadius.circular(10),
-                                            shape: BoxShape.rectangle,
-                                            color: Colors.red.shade100,
-                                          ),
-                                          child: Icon(
-                                            Icons.delete_outline_rounded,
-                                            color: Colors.red.shade400,
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ));
-                            },
-                          );
-                        } else if (state is ErrorGetState) {
-                          const Center(child: Text("Error getting data"));
-                          ScaffoldMessenger.of(context).showSnackBar(
-                              SnackBar(content: Text(state.message)));
-                        }
-
-                        return const Center(
-                          child: CircularProgressIndicator(),
-                        );
-                      },
+                  const Spacer(),
+                  TextButton(
+                    onPressed: () {
+                      showButtonSheet(context);
+                    },
+                    child: Row(
+                      children: [
+                        Icon(
+                          Icons.add,
+                          color: ColorPaltte().newDarkBlue,
+                        ),
+                        Text(
+                          'Add Medication',
+                          style: TextStyle(
+                            color: ColorPaltte().newDarkBlue,
+                          ),
+                        ),
+                      ],
                     ),
                   ),
                 ],
               ),
-            ),
-          ],
+              Expanded(
+                child: BlocBuilder<AsthmaBloc, AsthmaState>(
+                  builder: (context, state) {
+                    if (state is SuccessGetMedicationState) {
+                      return ListView.builder(
+                        shrinkWrap: true,
+                        itemCount: state.medications.length,
+                        itemBuilder: (context, index) {
+                          final medication = state.medications[index];
+                          return DataCardWidget(
+                            textEntry1: "name: ${medication.medicationName}",
+                            textEntry2:
+                                "days to take: ${medication.days.toString()}",
+                            textEntry3: "start date: ${medication.date}",
+                            deleteTap: () {
+                              context.read<AsthmaBloc>().add(
+                                  DeleteMedicationEvent(
+                                      id: medication.medicationID!));
+                            },
+                          );
+                        },
+                      );
+                    } else if (state is ErrorGetState) {
+                      const Center(child: Text("Error getting data"));
+                      ScaffoldMessenger.of(context)
+                          .showSnackBar(SnackBar(content: Text(state.message)));
+                    }
+
+                    return const Center(
+                      child: CircularProgressIndicator(),
+                    );
+                  },
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

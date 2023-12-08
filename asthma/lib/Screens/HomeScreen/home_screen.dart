@@ -181,34 +181,33 @@ class _HomeScreenState extends State<HomeScreen> {
                     fontSize: 12,
                     color: Colors.white54,
                   ),
-
-                  SizedBox(
-                    height: 75,
-                    width: context.getWidth(),
-                    child: InkWell(
-                      onTap: () {
-                        context.push(view: SymptomTrackerScreen());
-                      },
-                      child: Card(
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10)),
-                        color: ColorPaltte().newDarkBlue,
-                        child: const Center(
-                            child: Text(
-                          'Add Symptoms',
-                          style: TextStyle(
-                              fontWeight: FontWeight.w500,
-                              fontSize: 18,
-                              color: Colors.white),
-                        )),
-                      ),
-
                   child: Container(
                     margin: const EdgeInsets.symmetric(
                       vertical: 16.0,
-
                     ),
                     child: const Text('Terms of Service | Privacy Policy'),
+                  ),
+                ),
+                SizedBox(
+                  height: 75,
+                  width: context.getWidth(),
+                  child: InkWell(
+                    onTap: () {
+                      context.push(view: SymptomTrackerScreen());
+                    },
+                    child: Card(
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10)),
+                      color: ColorPaltte().newDarkBlue,
+                      child: const Center(
+                          child: Text(
+                        'Add Symptoms',
+                        style: TextStyle(
+                            fontWeight: FontWeight.w500,
+                            fontSize: 18,
+                            color: Colors.white),
+                      )),
+                    ),
                   ),
                 ),
               ],
@@ -297,7 +296,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       width: context.getWidth(),
                       child: InkWell(
                         onTap: () {
-                          context.push(view: const AddSymptomsScreen());
+                          context.push(view: SymptomTrackerScreen());
                         },
                         child: Card(
                           shape: RoundedRectangleBorder(
@@ -338,9 +337,7 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-
   void _handleMenuButtonPressed() {
     _advancedDrawerController.showDrawer();
   }
-
 }

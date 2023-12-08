@@ -13,20 +13,22 @@ final class SuccessGetSymptomState extends AsthmaState {
   final List<SymptomsModel> symptoms;
 
   SuccessGetSymptomState({required this.symptoms});
-
 }
 
 final class SuccessGetMedicationState extends AsthmaState {
-    final List<MedicationModel> medications;
+  final List<MedicationModel> medications;
 
   SuccessGetMedicationState({required this.medications});
 }
 
-final class SuccessAddSymptomState extends AsthmaState {
+final class SuccessAddSymptomState extends AsthmaState {}
+
+final class SuccessAddMedicationState extends AsthmaState {}
+
+final class SuccessDeleteState extends AsthmaState {
   
 }
 
-final class SuccessAddMedicationState extends AsthmaState {}
 
 final class SucsessMessageState extends AsthmaState {
   final String message;
@@ -39,11 +41,11 @@ final class ADDErrorState extends AsthmaState {
 
   ADDErrorState({required this.message});
 }
+
 final class ErrorGetState extends AsthmaState {
   final String message;
 
   ErrorGetState({required this.message});
 }
-
 
 final class ErrorState extends AsthmaState {}

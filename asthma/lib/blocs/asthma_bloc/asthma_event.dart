@@ -21,3 +21,15 @@ class AddMedicationEvent extends AsthmaEvent {
 
   AddMedicationEvent(this.medicationName, this.days, this.date);
 }
+
+class DeleteMedicationEvent extends AsthmaEvent {
+  final int id;
+
+  DeleteMedicationEvent({required this.id});
+}
+
+class DeleteSymptomEvent extends AsthmaEvent {
+  final int id;
+
+  DeleteSymptomEvent({required this.id});
+}
