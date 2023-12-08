@@ -1,9 +1,9 @@
 import 'dart:convert';
 import 'package:asthma/Models/location_model.dart';
+import 'package:asthma/Screens/Data_Symptoms_Screen/data_ymptoms_screen.dart';
 import 'package:asthma/Screens/HomeScreen/widgets/air_quality.dart';
 import 'package:asthma/Screens/HomeScreen/widgets/medication_reminder.dart';
 import 'package:asthma/Screens/HomeScreen/widgets/nerest_hospital.dart';
-import 'package:asthma/Screens/symptoms/add_symptoms_screen.dart';
 import 'package:asthma/Services/supabase.dart';
 import 'package:asthma/constants/colors.dart';
 import 'package:asthma/extensions/navigator.dart';
@@ -159,7 +159,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     width: context.getWidth(),
                     child: InkWell(
                       onTap: () {
-                        context.push(view: const AddSymptomsScreen());
+                        context.push(view: SymptomTrackerScreen());
                       },
                       child: Card(
                         shape: RoundedRectangleBorder(
