@@ -1,4 +1,5 @@
 import 'package:asthma/helper/imports.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class ContainerWidget extends StatelessWidget {
   const ContainerWidget({
@@ -35,10 +36,7 @@ class ContainerWidget extends StatelessWidget {
               ),
               Text(
                 title,
-                style: TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.w500,
-                    color: ColorPaltte().darkBlue),
+                style: const TextStyle().fieldFont2,
               ),
             ],
           ),

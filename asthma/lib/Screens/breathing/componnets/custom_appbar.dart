@@ -1,16 +1,31 @@
 // ignore_for_file: use_build_context_synchronously
 
 import 'package:asthma/helper/imports.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 ScreenshotController screenshotController = ScreenshotController();
 
 AppBar customAppBar(BuildContext context,
     {bool hasAction = false,
+    bool showtitle = false,
+    String? title,
     required Color backcolor,
     required Color iconColor}) {
   return AppBar(
+    centerTitle: true,
     elevation: 0,
     backgroundColor: backcolor,
+    title: Padding(
+      padding: const EdgeInsets.only(top: 20.0),
+      child: Visibility(
+        visible: showtitle,
+        child: Text("${title}",
+            style: TextStyle(
+                fontSize: 22,
+                fontWeight: FontWeight.w700,
+                color: ColorPaltte().darkBlue)),
+      ),
+    ),
     leading: IconButton(
         onPressed: () {
           Navigator.pop(context);
@@ -44,15 +59,15 @@ AppBar customAppBar(BuildContext context,
                                 children: [
                                   Text(
                                     "symptom: ${e.symptomName!}",
-                                    style: TextStyle().detailsOnboarding,
+                                    style: const TextStyle().detailsOnboarding,
                                   ),
                                   Text(
                                     "details: ${e.symptomDetails!}",
-                                    style: TextStyle().detailsOnboarding,
+                                    style: const TextStyle().detailsOnboarding,
                                   ),
                                   Text(
                                     "intensity: ${e.symptomIntensity!}",
-                                    style: TextStyle().detailsOnboarding,
+                                    style: const TextStyle().detailsOnboarding,
                                   )
                                 ],
                               ),

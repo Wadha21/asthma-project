@@ -1,3 +1,5 @@
+
+
 import 'dart:async';
 
 import 'package:dashboard/model/message_model.dart';
@@ -30,6 +32,7 @@ class ChatBloc extends Bloc<ChatEvent, ChatState> {
       emit(ErrorGetUsersState());
     }
   }
+
 
   sendMessage(MessageEvent event, emit) async {
     try {
@@ -66,23 +69,5 @@ class ChatBloc extends Bloc<ChatEvent, ChatState> {
 
   FutureOr<void> sendNumber(GetScreenChatEvent event, Emitter<ChatState> emit) {
     emit(ScreenChatState(event.ind));
-  }
-
-  FutureOr<void> numberOfMessages(
-      GetNumberOfMessagesEvent event, Emitter<ChatState> emit) async {
-    try {
-      final List allChats =
-          await supabase.from("chats").select().eq("type", 'admin');
-      List countChats = [];
-      for (var element in allChats) {
-        countChats.add(MessageModel.fromJson(element, getCurrentUserId));
-      }
-      final count = countChats.length; 
-
-      print(count);
-      emit(GetNumberOfMessagesState());
-    } catch (e) {
-      print(e);
-    }
   }
 }

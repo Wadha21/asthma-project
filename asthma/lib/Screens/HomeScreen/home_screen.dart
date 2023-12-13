@@ -1,25 +1,32 @@
 import 'package:asthma/Screens/HomeScreen/widgets/drawer.dart';
 import 'package:asthma/Screens/HomeScreen/widgets/location_functions.dart';
 import 'package:asthma/Screens/chat/chat_screen.dart';
-import 'package:asthma/blocs/chat_bloc/chat_bloc.dart';
 import 'package:asthma/helper/imports.dart';
 import 'widgets/home_custom_app_bar.dart';
 
-// @override
-// void initState() {
-//   super.initState();
-//   //getCurrentLocation();
-//   context.read<AsthmaBloc>().add(getHospitalDataEvent());
-// }
-class HomeScreen extends StatelessWidget {
-  HomeScreen({
+class HomeScreen extends StatefulWidget {
+  const HomeScreen({
     super.key,
   });
-  final _advancedDrawerController = AdvancedDrawerController();
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
 
+class _HomeScreenState extends State<HomeScreen> {
+  @override
+  void initState() {
+    super.initState();
+    getCurrentLocation();
+    getUserProfile();
+
+    context.read<AsthmaBloc>().add(getHospitalDataEvent());
+  }
+
+  final _advancedDrawerController = AdvancedDrawerController();
   @override
   Widget build(BuildContext context) {
     final bloc = context.read<UserBloc>();
+
     return DrawerMainWidget(
         drawerController: _advancedDrawerController,
         bloc: bloc,
@@ -56,10 +63,7 @@ class HomeScreen extends StatelessWidget {
                         children: [
                           Text(
                             '${AppLocalizations.of(context)!.welcome}, ',
-                            style: TextStyle(
-                                fontSize: 26,
-                                fontWeight: FontWeight.w800,
-                                color: ColorPaltte().newlightBlue),
+                            style: const TextStyle().titleFontwhite,
                           ),
                           BlocBuilder<UserBloc, UserState>(
                             buildWhen: (oldState, newState) {
@@ -69,13 +73,8 @@ class HomeScreen extends StatelessWidget {
                               return false;
                             },
                             builder: (context, state) {
-                              return Text(
-                                bloc.user?.name ?? "",
-                                style: TextStyle(
-                                    fontSize: 22,
-                                    fontWeight: FontWeight.w800,
-                                    color: ColorPaltte().darkBlue),
-                              );
+                              return Text(bloc.user!.name ?? "",
+                                  style: TextStyle().titleFont);
                             },
                           ),
                         ],
@@ -93,26 +92,15 @@ class HomeScreen extends StatelessWidget {
                           crossAxisAlignment: WrapCrossAlignment.center,
                           spacing: 16,
                           children: [
-                            BlocListener<ChatBloc, ChatState>(
-                              listener: (context, state) {
-                                if (state is GetAdminSuccessedState) {
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) => ChatScreen(
-                                                user: state.admin.first,
-                                              )));
-                                }
+                            ContainerWidget(
+                              imageurl: 'lib/assets/images/Chatbot-pana.png',
+                              title: AppLocalizations.of(context)!.helper,
+                              onTap: () {
+                                context.push(
+                                    view: ChatScreen(
+                                  user: bloc.user!,
+                                ));
                               },
-                              child: ContainerWidget(
-                                imageurl: 'lib/assets/images/Chatbot-pana.png',
-                                title: AppLocalizations.of(context)!.helper,
-                                onTap: () {
-                                  context
-                                      .read<ChatBloc>()
-                                      .add(GetAdminChatEvent());
-                                },
-                              ),
                             ),
                             ContainerWidget(
                               imageurl:
@@ -151,14 +139,14 @@ class HomeScreen extends StatelessWidget {
                       Text(
                         AppLocalizations.of(context)!.nearest,
                         style: TextStyle(
-                            fontSize: 22,
                             fontWeight: FontWeight.w800,
+                            fontSize: 22,
                             color: ColorPaltte().darkBlue),
                       ),
                       const SizedBox(
                         height: 20,
                       ),
-                      NerestHospital(),
+                      NerestHospital(nearestLocations: nearestLocations),
                     ],
                   ),
                 ),

@@ -33,7 +33,10 @@ class AddTextfield extends StatelessWidget {
         children: [
           Text(
             title,
-            style: const TextStyle().fieldFont,
+            style: TextStyle(
+                fontSize: 18,
+                color: ColorPaltte().darkBlue,
+                fontWeight: FontWeight.w600),
           ),
           const SizedBox(
             height: 8,
@@ -51,7 +54,6 @@ class AddTextfield extends StatelessWidget {
                   readOnly: onlyRead,
                   onTap: onTapped,
                   cursorColor: Colors.grey,
-                  textAlign: TextAlign.left,
                   controller: fieldController,
                   decoration: InputDecoration(
                     focusedBorder:
