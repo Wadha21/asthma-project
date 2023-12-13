@@ -1,5 +1,4 @@
-import 'package:asthma/Models/medication_model.dart';
-import 'package:asthma/Models/symptoms_model.dart';
+
 import 'package:asthma/helper/imports.dart';
 
 List<LocationModel> allHospetal = [];

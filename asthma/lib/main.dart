@@ -1,5 +1,6 @@
 import 'package:asthma/blocs/chat_bloc/chat_bloc.dart';
 import 'package:asthma/helper/imports.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 late SharedPreferences prefs;
@@ -47,6 +48,9 @@ class MainApp extends StatelessWidget {
             return MaterialApp(
               locale: Locale(state.lang),
               theme: ThemeData(
+                textTheme: GoogleFonts.tajawalTextTheme(
+                  Theme.of(context).textTheme,
+                ),
                 useMaterial3: false,
               ),
               debugShowCheckedModeBanner: false,

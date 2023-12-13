@@ -113,7 +113,7 @@ class UserBloc extends Bloc<UserEvent, UserState> {
 
     await supabase.storage.from('captrue_image').uploadBinary(
         '$idAuth-$time.png', event.image,
-        fileOptions: FileOptions(upsert: true));
+        fileOptions: const FileOptions(upsert: true));
     final image = supabase.storage
         .from('captrue_image')
         .getPublicUrl('$idAuth-$time.png');

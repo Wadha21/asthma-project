@@ -1,10 +1,7 @@
-import 'dart:async';
-import 'package:asthma/Models/location_model.dart';
-import 'package:asthma/Models/medication_model.dart';
-import 'package:asthma/Models/symptoms_model.dart';
-import 'package:asthma/Services/supabase.dart';
-import 'package:bloc/bloc.dart';
-import 'package:meta/meta.dart';
+
+
+
+import '../../helper/imports.dart';
 part 'asthma_event.dart';
 part 'asthma_state.dart';
 
@@ -12,6 +9,7 @@ class AsthmaBloc extends Bloc<AsthmaEvent, AsthmaState> {
   List<LocationModel>? hospitalData;
   List<MedicationModel>? medicationData;
   List<SymptomsModel>? symptomsData;
+
 
   AsthmaBloc() : super(AsthmaInitial()) {
     on<getHospitalDataEvent>(getData);
@@ -21,6 +19,8 @@ class AsthmaBloc extends Bloc<AsthmaEvent, AsthmaState> {
     on<AddSymptomEvent>(addSymptomMethod);
     on<DeleteMedicationEvent>(deleteMedicationMethod);
     on<DeleteSymptomEvent>(deleteSymtomMethod);
+    on<ChooseSymptomEvent>(changeSymptom);
+    on<ChooseLevelEvent>(changeLevel);
     add(GetMedicationDataEvent());
     add(GetSymptomDataEvent());
   }
@@ -35,7 +35,6 @@ class AsthmaBloc extends Bloc<AsthmaEvent, AsthmaState> {
 
       emit(SuccessHospitalState(hospitalData));
     } catch (error) {
-      print(error);
       emit(ErrorState());
     }
   }
@@ -132,5 +131,15 @@ class AsthmaBloc extends Bloc<AsthmaEvent, AsthmaState> {
     } catch (error) {
       emit(ErrorState());
     }
+  }
+
+  FutureOr<void> changeSymptom(
+      ChooseSymptomEvent event, Emitter<AsthmaState> emit) {
+    emit(ChangeSymptomState(event.selectedSymptom));
+  }
+
+  FutureOr<void> changeLevel(
+      ChooseLevelEvent event, Emitter<AsthmaState> emit) {
+    emit(ChangeLevelState(event.selectedLevel));
   }
 }

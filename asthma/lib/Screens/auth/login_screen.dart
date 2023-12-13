@@ -35,11 +35,10 @@ class LoginScreen extends StatelessWidget {
                 child: ListView(shrinkWrap: true, children: [
                   Column(
                     children: [
-
                       const SizedBox(height: 30),
-                      Text("Login", style: const TextStyle().bold24),
+                      Text(AppLocalizations.of(context)!.login,
+                          style: const TextStyle().bold24),
                       const SizedBox(height: 20),
-
                       TextFieldWidget(
                         keyForm: _emailKey,
                         hint: "example@example.com",
@@ -129,14 +128,10 @@ class LoginScreen extends StatelessWidget {
                                     passwordKey: _passwordKey));
                                 context.showLoading();
                               },
-
                               widget: Text(
                                 AppLocalizations.of(context)!.login,
                                 style: const TextStyle().fontButton,
                               ),
-
-                            
-
                             ),
                           );
                         },
@@ -150,10 +145,8 @@ class LoginScreen extends StatelessWidget {
                                 recognizer: TapGestureRecognizer()
                                   ..onTap =
                                       () => context.push(view: SignupScreen()),
-
                                 text: AppLocalizations.of(context)!.signupHere,
                                 style: const TextStyle().authGreyFont),
-
                           ],
                         ),
                       ),

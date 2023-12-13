@@ -22,7 +22,6 @@ class ChatWebScreen extends StatelessWidget {
         builder: (context, state) {
           if (state is GetUsersSuccessedState) {
             model = state.users;
-            ;
             return Row(
               children: [
                 SizedBox(

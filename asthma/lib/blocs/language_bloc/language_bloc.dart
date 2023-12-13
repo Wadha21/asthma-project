@@ -1,9 +1,7 @@
 import 'dart:async';
-
 import 'package:asthma/main.dart';
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
-
 part 'language_event.dart';
 part 'language_state.dart';
 

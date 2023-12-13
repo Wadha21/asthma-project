@@ -1,5 +1,6 @@
 import 'package:asthma/Screens/HomeScreen/widgets/drawer.dart';
 import 'package:asthma/Screens/HomeScreen/widgets/location_functions.dart';
+import 'package:asthma/Screens/chat/chat_screen.dart';
 import 'package:asthma/helper/imports.dart';
 import 'widgets/home_custom_app_bar.dart';
 
@@ -60,13 +61,9 @@ class _HomeScreenState extends State<HomeScreen> {
                       Row(
                         crossAxisAlignment: CrossAxisAlignment.end,
                         children: [
-// <<<<<<< Ruba-AlHilal
                           Text(
                             '${AppLocalizations.of(context)!.welcome}, ',
-                            style: TextStyle(
-                                fontSize: 26,
-                                fontWeight: FontWeight.w800,
-                                color: ColorPaltte().newlightBlue),
+                            style: const TextStyle().titleFontwhite,
                           ),
                           BlocBuilder<UserBloc, UserState>(
                             buildWhen: (oldState, newState) {
@@ -76,45 +73,8 @@ class _HomeScreenState extends State<HomeScreen> {
                               return false;
                             },
                             builder: (context, state) {
-                              return Text(
-                                bloc.user!.name ?? "",
-                                style: TextStyle(
-                                    fontSize: 22,
-                                    fontWeight: FontWeight.w800,
-                                    color: ColorPaltte().darkBlue),
-                              );
-// =======
-//                           ContainerWidget(
-//                             imageurl: 'lib/assets/images/Chatbot-pana.png',
-//                             title: AppLocalizations.of(context)!.helper,
-//                             onTap: () {
-//                               context.push(view: const ChatGPT());
-//                             },
-
-//                             // const MedicationReminder(),
-//                           ),
-//                           ContainerWidget(
-//                             imageurl:
-//                                 'lib/assets/images/Breathingexercise-rafiki1.png',
-//                             title: AppLocalizations.of(context)!.breathing,
-//                             onTap: () {
-//                               context.push(view: const BreathingScreen());
-//                             },
-//                           ),
-//                           ContainerWidget(
-//                             imageurl: 'lib/assets/images/Inhaller1-bro.png',
-//                             title: AppLocalizations.of(context)!.medicine,
-//                             onTap: () {
-//                               context.push(
-//                                   view: const MedicationTrackerScreen());
-//                             },
-//                           ),
-//                           ContainerWidget(
-//                             imageurl: 'lib/assets/images/Asymptomatic-bro.png',
-//                             title: AppLocalizations.of(context)!.symptom,
-//                             onTap: () {
-//                               context.push(view: const SymptomTrackerScreen());
-// >>>>>>> main
+                              return Text(bloc.user!.name ?? "",
+                                  style: TextStyle().titleFont);
                             },
                           ),
                         ],
@@ -136,7 +96,10 @@ class _HomeScreenState extends State<HomeScreen> {
                               imageurl: 'lib/assets/images/Chatbot-pana.png',
                               title: AppLocalizations.of(context)!.helper,
                               onTap: () {
-                                context.push(view: const ChatScreen());
+                                context.push(
+                                    view: ChatScreen(
+                                  user: bloc.user!,
+                                ));
                               },
                             ),
                             ContainerWidget(
@@ -176,8 +139,8 @@ class _HomeScreenState extends State<HomeScreen> {
                       Text(
                         AppLocalizations.of(context)!.nearest,
                         style: TextStyle(
-                            fontSize: 22,
                             fontWeight: FontWeight.w800,
+                            fontSize: 22,
                             color: ColorPaltte().darkBlue),
                       ),
                       const SizedBox(

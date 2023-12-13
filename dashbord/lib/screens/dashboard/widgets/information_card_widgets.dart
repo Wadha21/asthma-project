@@ -39,7 +39,7 @@ class InformationCard extends StatelessWidget {
             'Location: Riyadh',
             style: TextStyle(fontSize: 16),
           ),
-          SizedBox(
+          const SizedBox(
             height: 30,
           ),
           const Text(
@@ -61,8 +61,8 @@ class InformationCard extends StatelessWidget {
             height: 30,
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10),
-                color: Color.fromARGB(255, 50, 120, 152)),
-            child: Row(
+                color: const Color.fromARGB(255, 50, 120, 152)),
+            child: const Row(
               children: [
                 Icon(
                   Icons.done_outline_rounded,

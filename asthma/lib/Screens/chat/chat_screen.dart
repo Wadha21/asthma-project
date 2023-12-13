@@ -15,9 +15,11 @@ class ChatScreen extends StatelessWidget {
     return GestureDetector(
       onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
-        appBar: AppBar(
-          title: Text(user.name ?? ""),
-        ),
+        appBar: customAppBar(context,
+            title: user.name ?? "",
+            showtitle: true,
+            backcolor: Colors.transparent,
+            iconColor: ColorPaltte().darkBlue),
         bottomSheet: ChatField(
           controller: messageController,
           toUserId: user.idAuth.toString(),
@@ -48,7 +50,7 @@ class ChatScreen extends StatelessWidget {
                         isMine: messages[index].isMain ?? true);
                   });
             } else {
-              return SizedBox();
+              return const SizedBox();
             }
           },
         ),
