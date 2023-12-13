@@ -1,4 +1,6 @@
+
 import '../../helper/imports.dart';
+
 
 Widget? barcode;
 String? imageUrl;
@@ -10,12 +12,14 @@ class SymptomTrackerScreen extends StatefulWidget {
   SymptomTrackerScreenState createState() => SymptomTrackerScreenState();
 }
 
+
 class SymptomTrackerScreenState extends State<SymptomTrackerScreen> {
   @override
   void initState() {
     context.read<AsthmaBloc>().add(GetSymptomDataEvent());
     super.initState();
   }
+
 
   @override
   Widget build(BuildContext context) {
@@ -37,6 +41,7 @@ class SymptomTrackerScreenState extends State<SymptomTrackerScreen> {
                       bottomRight: Radius.circular(30))),
               height: 300,
             ),
+
             Positioned(
               top: -100,
               right: 50,

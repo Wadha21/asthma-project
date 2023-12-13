@@ -1,3 +1,4 @@
+
 import '../../../helper/imports.dart';
 
 TextEditingController symptomsDescriptionsController = TextEditingController();
@@ -5,6 +6,7 @@ TextEditingController symptomsDescriptionsController = TextEditingController();
 Future<dynamic> showSymptomButtonSheet(BuildContext context) {
   String selectedSymptom = AppLocalizations.of(context)!.cough;
   String selectedLevel = AppLocalizations.of(context)!.low;
+
   return showModalBottomSheet(
     showDragHandle: true,
     isScrollControlled: true,
@@ -17,6 +19,7 @@ Future<dynamic> showSymptomButtonSheet(BuildContext context) {
     ),
     context: context,
     builder: (BuildContext context) {
+
       return BlocBuilder<AsthmaBloc, AsthmaState>(
         builder: (context, state) {
           if (state is ChangeSymptomState) {
@@ -171,6 +174,7 @@ Future<dynamic> showSymptomButtonSheet(BuildContext context) {
             ),
           );
         },
+
       );
     },
   );

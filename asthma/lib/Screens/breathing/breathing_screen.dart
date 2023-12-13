@@ -36,7 +36,9 @@ class _BreathingScreenState extends State<BreathingScreen>
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
+
       backgroundColor: const Color.fromARGB(255, 243, 250, 255),
       appBar: customAppBar(context,
           backcolor: Colors.transparent, iconColor: ColorPaltte().darkBlue),

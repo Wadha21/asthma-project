@@ -1,5 +1,7 @@
+
 // ignore_for_file: library_private_types_in_public_api
 import '../../helper/imports.dart';
+
 
 class MedicationTrackerScreen extends StatefulWidget {
   const MedicationTrackerScreen({super.key});
@@ -10,11 +12,13 @@ class MedicationTrackerScreen extends StatefulWidget {
 }
 
 class _MedicationTrackerScreenState extends State<MedicationTrackerScreen> {
+
   @override
   void initState() {
     context.read<AsthmaBloc>().add(GetMedicationDataEvent());
     super.initState();
   }
+
 
   @override
   Widget build(BuildContext context) {
@@ -128,6 +132,7 @@ class _MedicationTrackerScreenState extends State<MedicationTrackerScreen> {
                               },
                             ),
                           );
+
                         } else {
                           return Center(
                             child: Text(
@@ -161,4 +166,5 @@ class _MedicationTrackerScreenState extends State<MedicationTrackerScreen> {
       ),
     );
   }
+
 }
