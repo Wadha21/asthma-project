@@ -29,31 +29,32 @@ class MainApp extends StatelessWidget {
         BlocProvider(
           create: (context) => ChatBloc(),
         ),
-          BlocProvider(
+        BlocProvider(
           create: (context) => UserBloc(),
         ),
       ],
-      child: const MaterialApp(
-        locale: Locale('en'),
-        home: LoadingScreen(),
+      child: MaterialApp(
+        locale: const Locale('en'),
+        home: const LoadingScreen(),
         theme: ThemeData(
-          datePickerTheme: const DatePickerThemeData(
-              confirmButtonStyle: ButtonStyle(
-                  textStyle: MaterialStatePropertyAll(
-                      TextStyle(color: Color(0xff146C94)))),
-              todayForegroundColor: MaterialStatePropertyAll(Color(0xff146C94)),
-              backgroundColor: Color.fromARGB(255, 149, 192, 212),
-              cancelButtonStyle: ButtonStyle(
-                  textStyle: MaterialStatePropertyAll(
-                      TextStyle(color: Colors.transparent))))),
+            datePickerTheme: const DatePickerThemeData(
+                confirmButtonStyle: ButtonStyle(
+                    textStyle: MaterialStatePropertyAll(
+                        TextStyle(color: Color(0xff146C94)))),
+                todayForegroundColor:
+                    MaterialStatePropertyAll(Color(0xff146C94)),
+                backgroundColor: Color.fromARGB(255, 149, 192, 212),
+                cancelButtonStyle: ButtonStyle(
+                    textStyle: MaterialStatePropertyAll(
+                        TextStyle(color: Colors.transparent))))),
         debugShowCheckedModeBanner: false,
-        localizationsDelegates: [
+        localizationsDelegates: const [
           AppLocalizations.delegate, // Add this line
           GlobalMaterialLocalizations.delegate,
           GlobalWidgetsLocalizations.delegate,
           GlobalCupertinoLocalizations.delegate,
         ],
-        supportedLocales: [
+        supportedLocales: const [
           Locale('en'), // English
           Locale('ar'), // Spanish
         ],

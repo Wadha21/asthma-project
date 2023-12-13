@@ -22,7 +22,6 @@
 "good": "good",
 "normal": "normal",
 "bad": "bad",
-
 "run": "run",
  "oneTitle": "Air Quality and Breathing Excerises",
   "oneDetails": "Check air quality level, and make\nbreathing excerises",
@@ -33,8 +32,7 @@
   "fourTitle": "Share Symptoms using QR Code",
   "fourDetails": "Add medications and symptoms\nand share it with doctors from the app\nas a QR code",
   "next": "NEXT",
-  "start": "START"
-
+  "start": "START",
 "language": "English",
 "login": "Login",
 "create": "Create New Account",

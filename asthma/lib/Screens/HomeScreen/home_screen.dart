@@ -1,9 +1,7 @@
-
 import 'package:asthma/Screens/HomeScreen/widgets/drawer.dart';
 import 'package:asthma/Screens/HomeScreen/widgets/location_functions.dart';
 import 'package:asthma/helper/imports.dart';
 import 'widgets/home_custom_app_bar.dart';
-
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({
@@ -21,14 +19,12 @@ class _HomeScreenState extends State<HomeScreen> {
     getUserProfile();
 
     context.read<AsthmaBloc>().add(getHospitalDataEvent());
-
   }
 
   final _advancedDrawerController = AdvancedDrawerController();
   @override
   Widget build(BuildContext context) {
     final bloc = context.read<UserBloc>();
-
 
     return DrawerMainWidget(
         drawerController: _advancedDrawerController,
@@ -54,7 +50,6 @@ class _HomeScreenState extends State<HomeScreen> {
                 child: Padding(
                   padding: const EdgeInsets.symmetric(
                     horizontal: 16,
-
                   ),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -141,10 +136,8 @@ class _HomeScreenState extends State<HomeScreen> {
                               imageurl: 'lib/assets/images/Chatbot-pana.png',
                               title: AppLocalizations.of(context)!.helper,
                               onTap: () {
-                                context.push(view: const ChatGPT());
+                                context.push(view: const ChatScreen());
                               },
-
-                              // const MedicationReminder(),
                             ),
                             ContainerWidget(
                               imageurl:

@@ -1,4 +1,3 @@
-import 'package:asthma/Screens/chat/chat_screen.dart';
 import 'package:asthma/blocs/chat_bloc/chat_bloc.dart';
 import 'package:asthma/helper/imports.dart';
 import 'package:shared_preferences/shared_preferences.dart';

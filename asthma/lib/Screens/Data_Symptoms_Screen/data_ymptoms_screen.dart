@@ -151,8 +151,11 @@ class SymptomTrackerScreenState extends State<SymptomTrackerScreen> {
                           }
                         } else if (state is ErrorGetState) {
                           const Center(child: Text("Error getting data"));
-                          ScaffoldMessenger.of(context).showSnackBar(
-                              SnackBar(content: Text(state.message)));
+                          showDialog(
+                          context: context,
+                          builder: (context) => AlertDialog(
+                                content: Text(state.message),
+                              ));
                           Future.delayed(Duration(seconds: 1), () {});
                         }
                         return const Center(
@@ -285,8 +288,11 @@ class SymptomTrackerScreenState extends State<SymptomTrackerScreen> {
                       selectedSymptom = 'cough';
                       selectedLevel = 'Low';
                     } else if (state is ADDErrorState) {
-                      ScaffoldMessenger.of(context)
-                          .showSnackBar(SnackBar(content: Text(state.message)));
+                     showDialog(
+                          context: context,
+                          builder: (context) => AlertDialog(
+                                content: Text(state.message),
+                              ));
                     }
                   },
                   child: ButtonWidget(
