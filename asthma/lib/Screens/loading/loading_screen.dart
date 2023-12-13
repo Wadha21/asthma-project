@@ -1,4 +1,3 @@
-import 'package:asthma/Screens/HomeScreen/widgets/location_functions.dart';
 import 'package:asthma/helper/imports.dart';
 
 class LoadingScreen extends StatelessWidget {
@@ -10,12 +9,11 @@ class LoadingScreen extends StatelessWidget {
       buildWhen: (oldState, newState) {
         if (newState is CheckLoginState) {
           context.read<UserBloc>().add(LoadUserDataEvent());
-          getCurrentLocation();
           context.read<AsthmaBloc>().add(getHospitalDataEvent());
           Future.delayed(const Duration(seconds: 4), () {
             Navigator.pushAndRemoveUntil(
                 context,
-                MaterialPageRoute(builder: (context) => HomeScreen()),
+                MaterialPageRoute(builder: (context) => const HomeScreen()),
                 (route) => false);
           });
         } else if (newState is ErrorCheckState) {

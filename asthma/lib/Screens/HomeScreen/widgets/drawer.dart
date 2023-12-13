@@ -47,28 +47,27 @@ class DrawerMainWidget extends StatelessWidget {
               BlocBuilder<UserBloc, UserState>(
                 builder: (context, state) {
                   return Container(
-                      width: 128.0,
-                      height: 128.0,
-                      margin: const EdgeInsets.only(
-                        top: 24.0,
-                        bottom: 64.0,
-                      ),
-                      clipBehavior: Clip.antiAlias,
-                      decoration: const BoxDecoration(
-                        color: Colors.black26,
-                        shape: BoxShape.circle,
-                      ),
-                      child: bloc.user?.image != null
-                          ? Image.network(
-                              bloc.user!.image!,
-                              fit: BoxFit.cover,
-                            )
-                          : Icon(Icons.person));
+                    width: 128.0,
+                    height: 128.0,
+                    margin: const EdgeInsets.only(
+                      top: 24.0,
+                      bottom: 64.0,
+                    ),
+                    clipBehavior: Clip.antiAlias,
+                    decoration: const BoxDecoration(
+                      color: Colors.black26,
+                      shape: BoxShape.circle,
+                    ),
+                    child: Image.network(
+                      bloc.user!.image!,
+                      fit: BoxFit.cover,
+                    ),
+                  );
                 },
               ),
               ListTile(
                 onTap: () {
-                  context.push(view:  HomeScreen());
+                  context.push(view: const HomeScreen());
                 },
                 leading: const Icon(Icons.home_outlined),
                 title: Text(AppLocalizations.of(context)!.home),

@@ -23,7 +23,16 @@ class UserBloc extends Bloc<UserEvent, UserState> {
   FutureOr<void> getData(
       LoadUserDataEvent event, Emitter<UserState> emit) async {
     try {
+      if (kDebugMode) {
+        print("===================Load Date==================");
+      }
       user = await getUserProfile();
+      if (kDebugMode) {
+        print(user);
+      }
+      if (kDebugMode) {
+        print("===================get Date==================");
+      }
       emit(LoadState());
     } catch (error) {
       emit(ErrorUserState());
@@ -104,7 +113,7 @@ class UserBloc extends Bloc<UserEvent, UserState> {
 
     await supabase.storage.from('captrue_image').uploadBinary(
         '$idAuth-$time.png', event.image,
-        fileOptions: FileOptions(upsert: true));
+        fileOptions: const FileOptions(upsert: true));
     final image = supabase.storage
         .from('captrue_image')
         .getPublicUrl('$idAuth-$time.png');

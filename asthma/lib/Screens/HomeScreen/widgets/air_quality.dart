@@ -2,6 +2,7 @@
 
 import 'package:asthma/Screens/HomeScreen/widgets/location_functions.dart';
 import 'package:asthma/helper/imports.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class AirQuality extends StatelessWidget {
   const AirQuality({
@@ -35,10 +36,7 @@ class AirQuality extends StatelessWidget {
               builder: (context, state) {
                 return Text(
                   '$value%',
-                  style: TextStyle(
-                      fontSize: 24,
-                      fontWeight: FontWeight.w700,
-                      color: ColorPaltte().darkBlue),
+                  style: const TextStyle().qualityFont,
                 );
               },
             ),
@@ -47,20 +45,14 @@ class AirQuality extends StatelessWidget {
             ),
             Text(
               AppLocalizations.of(context)!.quality,
-              style: TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.w700,
-                  color: ColorPaltte().darkBlue),
+              style: const TextStyle().qualtyText,
             ),
             const SizedBox(
               width: 8,
             ),
             Text(
               getAirQualityStatus(value!, context).toString(),
-              style: TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.w700,
-                  color: ColorPaltte().newDarkBlue),
+              style: const TextStyle().quality,
             ),
             const Spacer(),
             IconButton(

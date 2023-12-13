@@ -1,8 +1,4 @@
-
-
 import 'package:asthma/helper/imports.dart';
-
-import 'onboarding_screen.dart';
 
 class BoardingBottomsheet extends StatelessWidget {
   const BoardingBottomsheet({super.key, required this.pageController});
